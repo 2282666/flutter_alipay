@@ -38,9 +38,10 @@ class AlipayResult{
 class FlutterAlipay {
   static const MethodChannel _channel = const MethodChannel('flutter_alipay');
 
-  static Future<AlipayResult> pay(String payInfo) async {
+  static Future<AlipayResult> pay(String payInfo,bool isSandbox) async {
     final Map<String, dynamic> params = <String, dynamic>{
       'payInfo': payInfo,
+      'isSandbox': isSandbox
     };
     var res = await _channel.invokeMethod('pay', params);
     return new AlipayResult(result: res['result'],resultStatus: res['resultStatus'],memo: res['memo']);
