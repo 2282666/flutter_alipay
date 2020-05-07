@@ -42,14 +42,14 @@ public class FlutterAlipayPlugin implements MethodCallHandler {
     if (call.method.equals("pay")) {
       String payInfo = call.argument("payInfo");
       boolean isSandbox = call.argument("isSandbox");
-      pay(_registrar.activity() ,payInfo,result );
+      pay(_registrar.activity() ,payInfo,isSandbox,result );
     } else {
       result.notImplemented();
     }
   }
 
 
-  public static void pay(final Activity currentActivity, final String payInfo, final Result callback){
+  public static void pay(final Activity currentActivity, final String payInfo,boolean isSandbox, final Result callback){
     //沙箱环境
     if(isSandbox){
       EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
