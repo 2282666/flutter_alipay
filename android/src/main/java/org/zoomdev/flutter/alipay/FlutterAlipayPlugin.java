@@ -41,6 +41,7 @@ public class FlutterAlipayPlugin implements MethodCallHandler {
 
     if (call.method.equals("pay")) {
       String payInfo = call.argument("payInfo");
+      boolean isSandbox = call.argument("isSandbox");
       pay(_registrar.activity() ,payInfo,result );
     } else {
       result.notImplemented();
