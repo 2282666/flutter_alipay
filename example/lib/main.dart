@@ -82,7 +82,7 @@ class _MainState extends State<Main> {
     dynamic payResult;
     try {
       print("The pay info is : " + _payInfo);
-      payResult = await FlutterAlipay.pay(_payInfo);
+      payResult = await FlutterAlipay.pay(_payInfo,false);
     } on Exception catch (e) {
       payResult = null;
     }

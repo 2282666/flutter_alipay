@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 
 import com.alipay.sdk.app.PayTask;
+import com.alipay.sdk.app.EnvUtils;
 
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -48,7 +49,10 @@ public class FlutterAlipayPlugin implements MethodCallHandler {
 
 
   public static void pay(final Activity currentActivity, final String payInfo, final Result callback){
-
+    //沙箱环境
+    if(isSandbox){
+      EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
+    }
     new AsyncTask<String,Object,Map<String,String>>(){
 
       @Override
